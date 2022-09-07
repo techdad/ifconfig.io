@@ -1,10 +1,12 @@
 FROM golang:alpine AS builder
+RUN apk add --no-cache git
 
 # Set necessary environmet variables needed for our image
 ENV GO111MODULE=on \
     CGO_ENABLED=0 \
     GOOS=linux \
-    GOARCH=amd64
+    GOARCH=amd64 \
+    GOPROXY=direct
 
 # Move to working directory /build
 WORKDIR /build
